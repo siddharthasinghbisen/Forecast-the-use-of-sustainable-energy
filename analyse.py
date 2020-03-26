@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import pandas as pd
 import array as arr
+import seaborn as sns
 
 
 class dataanalyse:
@@ -43,3 +44,8 @@ class dataanalyse:
         return plt
 
         pass
+
+    def heatmap1(data):
+        co = data.corr()
+        heat = sns.heatmap(co, annot=True)
+        return plt
