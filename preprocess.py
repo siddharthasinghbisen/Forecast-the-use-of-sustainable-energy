@@ -12,3 +12,7 @@ class preprocess:
         data['Sustainable_Energy'] = data['Solar (terawatt-hours)'] + data['Traditional biofuels (terawatt-hours)'] + data['Other renewables (terawatt-hours)'] + data['Hydropower (terawatt-hours)'] + data['Nuclear (terawatt-hours)'] + data['Wind (terawatt-hours)']
 
         return data
+
+    def normalize(value, minn, maxx):
+        normalized = (value - minn) / (maxx - minn)
+        return normalized
