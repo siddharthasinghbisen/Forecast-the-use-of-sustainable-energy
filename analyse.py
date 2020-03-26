@@ -23,7 +23,7 @@ class dataanalyse:
         plt.ylabel('Energy consumed by energy sources in terawatt-hours')
         plt.title('Energy consumption for every 10 year')
         plt.legend()
-        plt.show()
+        return plt
         pass
 
     def pie(data):
@@ -40,6 +40,6 @@ class dataanalyse:
         plt.pie(ar, explode=explode, labels=labels, colors=colors,
                 autopct='%1.1f%%', shadow=True, startangle=140)
 
-        plt.show()
+        return plt
 
         pass
