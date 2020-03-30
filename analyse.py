@@ -49,3 +49,15 @@ class dataanalyse:
         co = data.corr()
         heat = sns.heatmap(co, annot=True)
         return plt
+
+    def trend(data):
+        plt.figure(figsize=(8, 6))
+
+        plt.plot(data['Year'], data['fossil_Fuels'], color='#474428', label='fossil_Fuels')
+        plt.plot(data['Year'], data['Sustainable_Energy'], color='#858F00', label='Sustainable_Energy')
+        plt.xlabel('Date in Year')
+        plt.ylabel('Energy consumed by energy sources in terawatt-hours')
+        plt.title('Energy consumption for every 10 year')
+        plt.legend()
+        return plt
+        pass

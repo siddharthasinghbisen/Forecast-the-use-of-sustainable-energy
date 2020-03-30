@@ -1,4 +1,5 @@
 import pandas as pd
+from train import training
 import sns
 
 
@@ -16,6 +17,11 @@ class preprocess:
     def getnormdata(data):
         for i in data.loc[:, data.columns != 'Year']:
             data[i] = preprocess.normalize(data[i], data.values.max(), data.values.min())
+        return data
+
+    def getdenormdata(data):
+        for i in data.loc[:, data.columns != 'Year']:
+            data[i] = preprocess.denormalize(data[i], data.values.max(), data.values.min())
         return data
 
     # formula of normalization

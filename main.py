@@ -1,5 +1,6 @@
 from analyse import dataanalyse
 from preprocess import preprocess
+from train import training
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -17,8 +18,8 @@ def main():
     pie = dataanalyse.pie(energy)
     # to plot heatmap
     heatmap = dataanalyse.heatmap1(energy)
-
-    normalizeddata = preprocess.getnormdata(energy)
+    #normalizeddata = preprocess.getnormdata(energy)
+    training.train(energy)
 
 
 if __name__ == '__main__':
