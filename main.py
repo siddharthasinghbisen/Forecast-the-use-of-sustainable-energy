@@ -5,11 +5,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# load data
-# analyze
-# preprocess
-
-
 def main():
     energy = preprocess.getdata()
     # to plot trend graph
@@ -19,7 +14,8 @@ def main():
     # to plot heatmap
     heatmap = dataanalyse.heatmap1(energy)
     #normalizeddata = preprocess.getnormdata(energy)
-    training.train(energy)
+    model = training.train(energy)
+    ''' Flask HTML page for the graphs'''
 
 
 if __name__ == '__main__':

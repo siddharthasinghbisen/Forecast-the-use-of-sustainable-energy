@@ -11,6 +11,12 @@ from sklearn.model_selection import train_test_split
 from keras.preprocessing.sequence import TimeseriesGenerator
 from keras.models import Sequential
 from sklearn.preprocessing import MinMaxScaler
+from split import splitit
+from keras.layers import RepeatVector
+from keras.layers import TimeDistributed
+from keras.callbacks import EarlyStopping
+from keras.callbacks import ModelCheckpoint
+from keras.models import load_model
 
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -19,40 +25,26 @@ from keras.layers import Dropout
 
 class training:
     def train(data):
-        X = data.iloc[:, 2:10]
-        y = data.iloc[:, 10:12]
-        scaler = MinMaxScaler(feature_range=(0, 1))
-        X_scaler = scaler.fit_transform(X)
-        print(X_scaler)
-        X_train, X_test, y_train, y_test = train_test_split(X_scaler, y, test_size=0.2, random_state=42, shuffle=False)
-        X_train = np.reshape(X_train, (X_train.shape[0], 1, X_train.shape[1]))
-        X_test = np.reshape(X_test, (X_test.shape[0], 1, X_test.shape[1]))
 
+        n_steps_in = 8
+        n_steps_out = 8
+        X, y = splitit.split_sequences(data[:50].values, n_steps_in, n_steps_out)
+        n_features = X.shape[2]
+        # define model
         model = Sequential()
-        model.add(LSTM(30, input_shape=(1, 8,), return_sequences=True))
-        model.add(Dropout(0.2))
-        model.add(LSTM(15))
-        model.add(Dropout(0.2))
-        model.add(Dense(2, activation='relu'))
+        model.add(LSTM(30, activation='relu', input_shape=(n_steps_in, n_features)))
+        model.add(RepeatVector(n_steps_out))
+        model.add(LSTM(20, activation='relu', return_sequences=True))
+        model.add(TimeDistributed(Dense(1)))
+        # model.compile(optimizer='adam', loss='mse', metrics=['mse',rmse,'mae',mape,merr])
+        model.compile(optimizer='adam', loss='mse', metrics=['mse', 'mae', 'acc'])
 
-        model.compile(loss='mse', optimizer='adam')
-        model.fit(X_train, y_train, epochs=200, batch_size=30, validation_split=0.2, verbose=2)
-        Predictions = model.predict(X_test)
-
-        lol = pd.DataFrame(Predictions)
-        lol = lol.rename(columns={0: 'fossil_Fuels', 1: 'Sustainable_Energys'})
-        print(lol)
-        print(data['fossil_Fuels'])
-        print
-        plt.figure(figsize=(8, 6))
-        test = data.iloc[:57, 10:11]
-        p = np.append(test, lol.iloc[:, 1:2])
-        plt.plot(p, label='prediction')
-        plt.plot(data['fossil_Fuels'], label='actual')
-
-        #plt.xlabel('Full data')
-        #plt.ylabel('Energy consumed by energy sources in terawatt-hours')
-
-        #plt.title('Energy consumption for every 10 year')
+        es = EarlyStopping(monitor='mae', mode='min', verbose=1, patience=100)
+        mc = ModelCheckpoint('best_model2.h5', monitor='mae', mode='min', verbose=0, save_best_only=True)
+        X1, y1 = splitit.split_sequences(data[50:70].values, n_steps_in, n_steps_out)
+        history = model.fit(X, y, epochs=1500, verbose=2, validation_data=(X1, y1), callbacks=[es, mc])
+        saved_model = load_model('best_model2.h5')
+        plt.plot(history.history['mae'], label='train')
+        plt.plot(history.history['val_mae'], label='validation')
         plt.legend()
         plt.show()
