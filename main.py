@@ -3,28 +3,46 @@ from preprocess import preprocess
 from train import training
 import pandas as pd
 import matplotlib.pyplot as plt
-import flask
+from flask import Flask
+
+
+''' main function 
+
+	energy = to preprocess the data by adding columns or removing unwanted data points
+	
+	trend = A variable to analyse the trend of data for each year
+	
+	pie = to plot pie chart
+'''
 
 
 def main():
     energy = preprocess.getdata()
-    # to plot trend graph
+
     trend = dataanalyse.trend(energy)
-    # to plot pie chart
+
     pie = dataanalyse.pie(energy)
     # to plot heatmap
     heatmap = dataanalyse.heatmap1(energy)
     # normalizeddata = preprocess.getnormdata(energy)
     model = training.train(energy)
-    ''' Flask HTML page for the graphs'''
+#------------------------------------------------------------------
+
+    ''' Flask HTML page for the Web application
+		
+		app = an instance for creating the web application
+		
+		home = Function that will be called when user is on default page("/")
+		
+		Having debug=True allows possible Python errors to appear on the web page'''
 
 
-@app.route('/', methods=['GET'])
+app = Flask(__name__)
+
+
+@app.route("/")
 def home():
-    return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>"
-
-
-app.run()
+    return "Hello, World!"
 
 
 if __name__ == '__main__':
