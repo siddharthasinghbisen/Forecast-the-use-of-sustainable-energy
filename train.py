@@ -52,4 +52,3 @@ class training:
 
         predictions = pd.concat([yhat, testy], axis=1)
         predictions.plot()
-        plt.show()

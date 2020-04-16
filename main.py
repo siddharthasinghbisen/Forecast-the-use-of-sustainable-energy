@@ -20,7 +20,7 @@ def main():
     energy = preprocess.getdata()
 
     trend = dataanalyse.trend(energy)
-
+    trend.savefig('D:/exam/ML/Energy consumption/images/Trend.png')
     pie = dataanalyse.pie(energy)
     # to plot heatmap
     heatmap = dataanalyse.heatmap1(energy)
