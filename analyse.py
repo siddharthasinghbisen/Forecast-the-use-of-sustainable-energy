@@ -50,7 +50,7 @@ class dataanalyse:
         heat = sns.heatmap(co, annot=True)
         return plt
 
-    def trend(data):
+    def trend2(data):
         plt.figure(figsize=(8, 6))
 
         plt.plot(data['Year'], data['fossil_Fuels'], color='#474428', label='fossil_Fuels')
