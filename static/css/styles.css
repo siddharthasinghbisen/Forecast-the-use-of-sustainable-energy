@@ -89,7 +89,7 @@ img.d{
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: #242f3f;
+	background-color: black;
 }
 .center {
   display: flex;
