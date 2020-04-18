@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
-<p> This is prediction</p>
+</head>
+
+<body>
 	
 
+	<header>		
+		<h1 align ="center"><u>This is my ML App</u></h1>
+	</header>
+
+	<div class="heading">
+		<h3 >Welcome to the Prediction Page.<BR> Here all the energy sources that are used since 1800 are shown and analysed below.</h3>		
+	</div>
+
+	
+   	<div>
+		<img class="a" src="static/images/predictions.png" width="450" height="300">
+		<p class = "texta"> The predictions of the model on test data are promissing as shown in the image. The orange line shows the predictions vs the real value.</p>
+   	</div>
+	
+
+
+	</form>
 </body>
+
 </html>
