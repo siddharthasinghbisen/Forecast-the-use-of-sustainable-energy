@@ -51,12 +51,12 @@ def home():
     return render_template('home.html')
 
 
-# PRedictions Page
-@app.route("/prediction")
-def main():
+# Predictions Page
+@app.route('/prediction', methods=['POST'])
+def prediction():
     energy = preprocess.getdata()
-# normalizeddata = preprocess.getnormdata(energy)
-# train model and get predictions
+    # normalizeddata = preprocess.getnormdata(energy)
+    # train model and get predictions
     model = training.train(energy)
     model.savefig('D:/exam/ML/Energy consumption/static/images/predictions.png')
     return render_template('prediction.html')

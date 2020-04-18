@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
 </head>
+
 <body>
-
-	<header>
-		<div class="container">
-		<div id="brandname">
-			My ML App
-		</div>
-		<h2>Machine learning model to predict use of sustainaible energy in future</h2>
-		
-	</div>
+	<header>		
+		<h1 align ="center"><u>This is my ML App</u></h1>
 	</header>
-	
-	<div>
-	<p>The use of different energy sources from 1800 to 2018 are displayed using trend graph below:</p>
-	<img src="{{url_for('static', filename='/images/energytrends.png')}}" align="left" width="500" height="300"/><BR>
-	</div>
-	<div>
-	<p>comparison between the use of fossil fuel and sustainaible energy sources from 1800 to 2018 are displayed using trend graph below:</p>	<img src="{{url_for('static', filename='/images/Trend2.png')}}" align="right" width="500" height="300"/><BR>
-	</div>
-	<div class="ml-container">
 
-		<form>
-		<p>Click To Predict</p>
+	<div class="heading">
+		<h3 >Welcome to the Home Page.<BR> Here all the energy sources that are used since 1800 are shown and analysed below.</h3>		
+	</div>
+
+	<div>
+		<img class="a" src="static/images/energytrends.png" width="450" height="300">
+		<p class = "texta">1) The use of different energy sources from 1800 to 2018 are displayed using the trend graph.</p>
+   	</div>
+
+   	<div>
+		<img class="b" src="static/images/Trend2.png" width="450" height="300">
+		<p class = "textb">2) The comparison between the use of fossil fuel and sustainaible energy sources from 1800 to 2018 are displayed using trend graph.</p>
+   	</div>
+
+   	<div>
+		<img class="c" src="static/images/pie.png" width="450" height="300">
+		<p class = "textc">3) The comparison between all the energy sources that are usid since 1800 around the globe are displayed and analysed through pie graph.</p>
+   	</div>
+
+   	<div>
+		<img class="d" src="static/images/heatmap.png" width="450" height="300">
+		<p class = "textd">4) The relation between different energy sources are analysed through SNS heatmap graph..</p>
+   	</div>
+	
+	<form action="{{ url_for('prediction')}}" method="POST">
+		
+		<h2 class="textbut">Click the button to get the predictions</h2>
 		<!-- <input type="text" name="comment"/> -->
 		
+		<input class="but" type="submit" class="btn-info" value="prediction">
 
-		<input type="submit" class="btn-info" value="predict">
-		
 	</form>
-		
-	</div>
-
-	
-	
-
 </body>
+
 </html>
