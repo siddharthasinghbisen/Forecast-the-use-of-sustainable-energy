@@ -2,12 +2,19 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+	<script type="text/javascript">// <![CDATA[
+        function loading(){
+            $(".loader-wrapper").show();
+            $("#content").hide();       
+        }
+// ]]></script>
 </head>
 
 <body>
 	
-
+	<div id="content">
 	<header>		
 		<h1 align ="center"><u>This is my ML App</u></h1>
 	</header>
@@ -39,16 +46,24 @@
 	<form action="{{ url_for('prediction')}}" method="POST">
 		
 		<h2 class="textbut">Click the button to get the predictions</h2>
-		<!-- <input type="text" name="comment"/> -->
 		
-		<input class="but" type="submit" class="btn-info" value="prediction">
-		<form>
-            <a href=# id=test><button class='btn btn-default'>Test</button></a>
-        </form>
+		<input class="but" type="submit" class="btn-info" value="prediction" onclick="loading();">
 
 
 
 	</form>
+	</div>
+	<div class="loader-wrapper" style="display:none">
+	<div class="center">
+  <div class="ring"></div>
+  <span>Loading...</span>
+
+</div>
+</div>
+
+
+	</script>
+
 </body>
 
 </html>

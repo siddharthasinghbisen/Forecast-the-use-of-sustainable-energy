@@ -2,11 +2,24 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+	<script>
+		$(window).load(function() {
+		$(".loader-wrapper").fadeOut("slow");;
+	});
+	</script>
 </head>
 
 <body>
 	
+		<div class="loader-wrapper">
+	<div class="center">
+  <div class="ring"></div>
+  <span>Loading...</span>
+
+	</div>
+	</div>
 
 	<header>		
 		<h1 align ="center"><u>This is my ML App</u></h1>
