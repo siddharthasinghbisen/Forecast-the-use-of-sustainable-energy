@@ -22,6 +22,15 @@ from keras.layers import Dense
 from keras.layers import LSTM
 from keras.layers import Dropout
 
+'''
+	train function is used to train the data on LSTM model
+
+	splitit function fron split.py is used to split the data
+
+	the function return graph plt to main.py and later saved and displayed on website.
+
+'''
+
 
 class training:
     def train(data):

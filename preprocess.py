@@ -3,6 +3,18 @@ from train import training
 import sns
 
 
+'''
+    gerdata function is to get the data and preprocess it for training
+   
+    getnormdata function is to normalize the data in range of (0, 1) and reverese using getdenormdata function
+   
+    normalize function takes 3 parameters(values from the selected column, minn in the column and max from that column) 
+    is set of mathematical calculations that converts the given value in scalar form and back to normal value using 
+    function denormalize.
+
+'''
+
+
 class preprocess:
     def getdata():
         # Read CSV file
