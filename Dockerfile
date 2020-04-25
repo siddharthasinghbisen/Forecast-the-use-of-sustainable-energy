@@ -22,7 +22,7 @@ RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 
-
+# To open port at 5000
 
 EXPOSE 5000
 
