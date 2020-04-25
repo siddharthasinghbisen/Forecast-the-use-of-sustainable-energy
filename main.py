@@ -25,7 +25,6 @@ from flask import Flask, render_template, url_for, request
 
 	home = Function that will be called when user is on default page("/")
 
-	Having debug=True allows possible Python errors to appear on the web page
 '''
 
 app = Flask(__name__)
