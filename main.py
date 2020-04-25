@@ -44,7 +44,7 @@ def home():
     pie = dataanalyse.pie(energy)
     pie.savefig('D:/exam/ML/Energy consumption/static/images/pie.png')
 
-	# to plot heatmap
+    # to plot heatmap
     heatmap = dataanalyse.heatmap1(energy)
     heatmap.savefig('D:/exam/ML/Energy consumption/static/images/heatmap.png')
 
@@ -65,4 +65,4 @@ def prediction():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, threaded=False, host='0.0.0.0')
