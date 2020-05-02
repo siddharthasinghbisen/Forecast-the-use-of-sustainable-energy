@@ -1,4 +1,4 @@
-# Getting base image as Ubuntu
+# Getting base image as alpine
 FROM alpine:latest
 
 
